@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+:root {
+  @each $category, $colors in $active-theme {
+    @each $shade, $value in $colors {
+      --#{$category}-#{$shade}: #{$value};
+    }
+  }
+
+  @each $size-prop, $size-value in $font-sizes {
+    --ff-#{$size-prop}: #{$size-value};
+  }
+}

@@ -1,0 +1,20 @@
+$ff-sans: 'Jakarta-Sans';
+
+$ff-base: $ff-sans;
+
+$font-sizes: (
+  300: 0.75rem,
+  400: 0.8125rem,
+  500: 0.9375rem,
+  600: 1.125rem,
+  700: 1.5rem,
+);
+
+$fs-300: var(--fs-300);
+$fs-400: var(--fs-400);
+$fs-500: var(--fs-500);
+$fs-600: var(--fs-600);
+$fs-700: var(--fs-700);
+
+$fw-500: 500;
+$fw-700: 700;

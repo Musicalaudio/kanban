@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Jakarta-Sans';
+  font-weight: 500;
+  font-display: swap;
+  src: url(../../public/PlusJakartaSans-Medium.woff2) format('woff2'),
+    url(../../public/PlusJakartaSans-Medium.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Jakarta-Sans';
+  font-weight: 700;
+  font-display: swap;
+  src: url(../../public/PlusJakartaSans-Bold.woff2) format('woff2'),
+    url(../../public/PlusJakartaSans-Bold.woff) format('woff');
+}

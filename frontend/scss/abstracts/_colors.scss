@@ -1,0 +1,66 @@
+//global tokens
+$-clr-white-400: hsl(0, 0%, 100%);
+$-clr-white-500: hsl(220, 69%, 97%);
+$-clr-grey-100: hsl(221, 69%, 94%);
+$-clr-grey-200: hsl(216, 15%, 57%);
+$-clr-grey-300: hsl(236, 11%, 27%);
+$-clr-grey-400: hsl(237, 100%, 4%);
+$-clr-grey-500: hsl(235, 12%, 19%);
+$-clr-grey-600: hsl(235, 16%, 15%);
+$-clr-black-400: hsl(237, 100%, 4%);
+$-clr-purple-200: hsl(243, 100%, 82%);
+$-clr-purple-300: hsl(249, 83%, 70%);
+$-clr-purple-400: hsl(242, 48%, 48%);
+$-clr-pink-300: hsl(0, 100%, 80%);
+$-clr-pink-400: hsl(0, 78%, 63%);
+$-clr-blue-200: hsl(193, 75%, 59%);
+$-clr-green-200: hsl(154, 68%, 64%, 1);
+
+$light: (
+  'neutral': (
+    000: $-clr-white-400,
+    100: $-clr-white-500,
+    200: $-clr-grey-200,
+  ),
+  'primary': (
+    200: $-clr-purple-200,
+    300: $-clr-purple-300,
+    400: $-clr-purple-400,
+  ),
+  'secondary': (
+    300: rgba($-clr-purple-400, 0.1),
+    400: rgba($-clr-purple-400, 0.25),
+  ),
+  'accent': (
+    000: $-clr-white-400,
+    100: $-clr-green-200,
+    200: $-clr-blue-200,
+    300: $-clr-purple-300,
+    400: $-clr-pink-300,
+    500: $-clr-pink-400,
+  ),
+);
+
+$dark: (
+  'neutral': (
+    000: $-clr-grey-500,
+    100: $-clr-grey-600,
+    200: $-clr-grey-200,
+  ),
+  'primary': (
+    300: $-clr-purple-200,
+    400: $-clr-purple-400,
+  ),
+  'secondary': (
+    300: $-clr-white-400,
+    400: $-clr-white-400,
+  ),
+  'accent': (
+    000: $-clr-white-400,
+    100: $-clr-green-200,
+    200: $-clr-blue-200,
+    300: $-clr-purple-300,
+    400: $-clr-pink-300,
+    500: $-clr-pink-400,
+  ),
+);
