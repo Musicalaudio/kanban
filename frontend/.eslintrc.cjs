@@ -29,5 +29,8 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'react', 'prettier'],
-  rules: { 'react/react-in-jsx-scope': 0 },
+  rules: [
+    { 'react/react-in-jsx-scope': 0 },
+    [2, { namedComponents: 'arrow-function' }],
+  ],
 };
