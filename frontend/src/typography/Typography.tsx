@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-const element = {
+const tagMap = {
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
@@ -10,11 +10,29 @@ const element = {
   p: 'p',
 };
 
+const variantMap = {
+  xl: 'heading-xl',
+  l: 'heading-l',
+  m: 'heading-m',
+  s: 'heading-s',
+  xs: 'heading-xs',
+};
+
 interface TypographyProps {
-  element: string;
+  tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+  variant: string;
   children: ReactNode;
 }
 
-const Typography = (props: TypographyProps) => {};
+const Typography = ({ tag, variant, children, ...props }: TypographyProps) => {
+  const Component = tag ? tagMap[tag as keyof Object] : 'p';
+  const variantClass = variant ? variantMap[variant as keyof Object] : '';
+
+  return (
+    <Component className={variantClass} {...props}>
+      {children}
+    </Component>
+  );
+};
 
 export default Typography;
