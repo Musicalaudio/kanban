@@ -1,5 +1,5 @@
-const homeLoader = () => {
-  return <>loader</>;
+const dashboardLoader = () => {
+  return;
 };
 
-export default homeLoader;
+export default dashboardLoader;

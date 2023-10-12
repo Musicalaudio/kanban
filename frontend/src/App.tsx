@@ -1,19 +1,29 @@
-import '../scss/main.scss';
-import { createBrowserRouter, RouteProvider } from 'react-router-dom';
-import Home from './pages/Home';
+import './scss/main.scss';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import homeLoader from './pages/homeLoader';
+import SideMenu from './components/sidemenu/SideMenu';
+import Header from './components/header/Header';
+import Dashboard from './pages/Dashboard';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
-    loader: homeLoader,
+    element: <Dashboard />,
+    // loader: homeLoader,
     children: [],
   },
 ]);
 
 function App() {
-  return <h1>hello world</h1>;
+  return (
+    <>
+      <SideMenu />
+      <main>
+        <Header />
+        <RouterProvider router={router} />{' '}
+      </main>
+    </>
+  );
 }
 
 export default App;
