@@ -1,0 +1,12 @@
+.header {
+  // min-width: 100%;
+  background-color: var(--neutral-400);
+  border-bottom: var(--neutral-150) 0.0625rem solid;
+  justify-content: space-between;
+  align-items: center;
+
+  &__btns {
+    display: flex;
+    align-content: center;
+  }
+}
