@@ -5,7 +5,7 @@ import styles from './Header.module.scss';
 
 const Header = () => {
   return (
-    <header className={`flex ${styles.header}`}>
+    <header className={styles.header}>
       <Typography variant="xl" tag="h1">
         Platform Launch
       </Typography>
