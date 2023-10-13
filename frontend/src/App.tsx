@@ -4,6 +4,7 @@ import homeLoader from './pages/homeLoader';
 import SideMenu from './components/sidemenu/SideMenu';
 import Header from './components/header/Header';
 import Dashboard from './pages/Dashboard';
+import { Fragment } from 'react';
 
 const router = createBrowserRouter([
   {
@@ -16,13 +17,13 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <div className="flex">
       <SideMenu />
       <main>
         <Header />
         <RouterProvider router={router} />{' '}
       </main>
-    </>
+    </div>
   );
 }
 

@@ -1,0 +1,19 @@
+.sidemenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  // position: fixed;
+  // width: ;
+  width: 16.25rem;
+  background: var(--neutral-400);
+  border-right: var(--neutral-150) 0.0625rem solid;
+
+  &__nav {
+    margin-bottom: auto;
+  }
+
+  &__ul {
+    padding-left: 0;
+  }
+}
