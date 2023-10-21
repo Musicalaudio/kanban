@@ -1,29 +1,41 @@
 import './scss/main.scss';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import homeLoader from './pages/homeLoader';
-import SideMenu from './components/sidemenu/SideMenu';
-import Header from './components/header/Header';
-import Dashboard from './pages/Dashboard';
-import { Fragment } from 'react';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router-dom';
+import Authentication from './pages/Authentication/Authentication';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Layout from './pages/Layout/Layout';
+import { AuthContextProvider } from './context/AuthContext';
+import Error404 from './pages/Error/Error404';
+import Login from './pages/Authentication/login/Login';
+import { loginAction } from './pages/Authentication/login/loginAction';
+import Signup from './pages/Authentication/signup/Signup';
+import { signupAction } from './pages/Authentication/signup/signupAction';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Dashboard />,
-    // loader: homeLoader,
-    children: [],
-  },
-]);
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/">
+      <Route element={<Authentication />}>
+        <Route index element={<Login />} action={loginAction} />
+        <Route index path="login" element={<Login />} action={loginAction} />
+        <Route path="signup" element={<Signup />} action={signupAction} />
+      </Route>
+      <Route path="dashboard" element={<Layout />}>
+        <Route index element={<Dashboard />}></Route>
+      </Route>
+      <Route path="*" element={<Error404 />} />
+    </Route>
+  )
+);
 
 function App() {
   return (
-    <div className="flex">
-      <SideMenu />
-      <main>
-        <Header />
-        <RouterProvider router={router} />{' '}
-      </main>
-    </div>
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
   );
 }
 

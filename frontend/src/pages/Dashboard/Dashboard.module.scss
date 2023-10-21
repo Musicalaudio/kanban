@@ -1,0 +1,8 @@
+.dashboard {
+  display: grid;
+  height: 100%; //this causes overflow, come back to later
+  &__empty {
+    place-self: center;
+    text-align: center;
+  }
+}

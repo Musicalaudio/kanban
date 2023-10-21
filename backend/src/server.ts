@@ -19,7 +19,7 @@ const port = process.env.PORT || 8000;
 const app = express();
 
 //middleware
-app.use(cors({ credentials: true }));
+app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 

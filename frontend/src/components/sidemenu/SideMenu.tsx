@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import logoLight from '../../../assets/logo-dark.svg';
-import CreateBoardButton from './CreateBoardButton';
-import BoardTab from './BoardTab';
 import styles from './SideMenu.module.scss';
 import ThemeSelector from './ThemeSelector';
 import Button from '../button/Button';
+import { NavLink } from 'react-router-dom';
 
 const SideMenu = () => {
   return (
@@ -19,13 +18,20 @@ const SideMenu = () => {
           {/* {create map to loop through date and return <li><BoardTab>...</BoardTab></li>} */}
           {/* should we instead pass the button to boardtab like <BoardTab button={<Button>Perform Launch</Button>} */}
           <li>
+            {/* can we use isActive with a data-attribute instead if we want to? */}
+            {/* <NavLink to="/:dashboard" className={({isActive}) => isActive? "active-dashboard" : null}> */}
             <Button>Perform Launch</Button>
+            {/* </NavLink> */}
           </li>
           <li>
+            {/* <NavLink> */}
             <Button>Marketing Plan</Button>
+            {/* </NavLink> */}
           </li>
           <li>
+            {/* <NavLink> */}
             <Button>Perform Launch</Button>
+            {/* </NavLink> */}
           </li>
         </ul>
         <Button>+ Create New Board</Button>

@@ -1,0 +1,26 @@
+.login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.login__header {
+}
+
+.login__guest {
+  text-align: center;
+}
+
+.login__guest p {
+  max-width: 45ch;
+}
+
+.login__account {
+  text-align: center;
+}
+
+.login__form {
+}
