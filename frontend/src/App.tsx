@@ -14,6 +14,7 @@ import Login from './pages/Authentication/login/Login';
 import { loginAction } from './pages/Authentication/login/loginAction';
 import Signup from './pages/Authentication/signup/Signup';
 import { signupAction } from './pages/Authentication/signup/signupAction';
+import authLoader from './pages/Authentication/authLoader';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +24,12 @@ const router = createBrowserRouter(
         <Route index path="login" element={<Login />} action={loginAction} />
         <Route path="signup" element={<Signup />} action={signupAction} />
       </Route>
-      <Route path="dashboard" element={<Layout />}>
+      <Route
+        path="dashboard"
+        loader={authLoader}
+        element={<Layout />}
+        errorElement={<>Error</>}
+      >
         <Route index element={<Dashboard />}></Route>
       </Route>
       <Route path="*" element={<Error404 />} />
@@ -32,6 +38,7 @@ const router = createBrowserRouter(
 );
 
 function App() {
+  console.log(document.cookie);
   return (
     <AuthContextProvider>
       <RouterProvider router={router} />

@@ -4,7 +4,7 @@ interface TypographyProps {
   tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   variant: 'xl' | 'l' | 'm' | 's' | 'xs';
   font?: 'base' | 'accent';
-  children: ReactNode;
+  children: ReactNode | {};
 }
 
 /* might have to refactor later to extend JSX.Instrinsic elements or something like that 

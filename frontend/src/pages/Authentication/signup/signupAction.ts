@@ -1,5 +1,6 @@
 import { redirect } from 'react-router';
-import { useSignUp } from '../../../hooks/useSignUp';
+import { useSignUp } from './useSignUp';
+import axios from 'axios';
 
 export async function signupAction({ request }: { request: Request }) {
   const formData = await request.formData();
@@ -13,10 +14,12 @@ export async function signupAction({ request }: { request: Request }) {
       new URL(request.url).searchParams.get('redirectTo') || '/login';
     return redirect(pathname);
   } catch (err) {
-    if (err instanceof Error) {
-      console.log(err.message);
+    if (axios.isAxiosError(err)) {
+      console.log(err.request.response);
+      return err.request.response;
     } else {
       console.log('Unexpected error', err);
+      return 'Sorry, there was an unexpected error, please try again later';
     }
   }
   return null;

@@ -1,10 +1,11 @@
+import Button from '../../components/button/Button';
 import Typography from '../../typography/Typography';
 
 const Guest = () => {
   return (
     <>
-      <Typography tag="h1" variant="xl">
-        Continue as Guest
+      <Typography tag="h2" variant="xl">
+        Want to just try it out?
       </Typography>
       <Typography tag="p" variant="s">
         If you just want to play around and see what's possible without the
@@ -15,6 +16,7 @@ const Guest = () => {
         browser to save, so if this is cleared then your progress will be
         deleted.
       </Typography>
+      <Button>Continue as Guest</Button>
     </>
   );
 };

@@ -1,13 +1,20 @@
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, useActionData, useNavigation } from 'react-router-dom';
 import Button from '../../../components/button/Button';
 import Typography from '../../../typography/Typography';
 
 const Signup = () => {
+  const navigation = useNavigation();
+  const errorMessage = useActionData();
   return (
     <>
       <Typography tag="h1" variant="xl">
         Create an account
       </Typography>
+      {errorMessage && (
+        <Typography tag="p" variant="xs">
+          {errorMessage}
+        </Typography>
+      )}
       <Form method="post" className="signup__form" replace>
         <input
           type="username"
@@ -27,7 +34,9 @@ const Signup = () => {
           placeholder="Password"
           required
         />
-        <Button>Sign Up</Button>
+        <Button>
+          {navigation.state === 'submitting' ? 'Processing' : 'Sign Up'}
+        </Button>
       </Form>
       <p>
         Already have an account?&nbsp;

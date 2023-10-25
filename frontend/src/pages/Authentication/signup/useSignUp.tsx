@@ -1,10 +1,8 @@
 import axios from 'axios';
 
-export const useSignIn = async (creds: any) => {
-  console.log(`BRUHHH ${JSON.stringify(creds)}`);
-
+export const useSignUp = async (creds: any) => {
   const res = await axios.post(
-    `${import.meta.env.VITE_SERVER}/auth/login`,
+    `${import.meta.env.VITE_SERVER}/auth/register`,
     JSON.stringify(creds),
     {
       headers: { 'Content-Type': 'application/json' },
@@ -14,5 +12,4 @@ export const useSignIn = async (creds: any) => {
 
   console.log(JSON.stringify(res));
   return JSON.stringify(res);
-  const accessToken = res?.data?.authentication?.sessionToken;
 };
