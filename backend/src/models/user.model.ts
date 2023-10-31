@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema(
       },
       required: false,
     },
+    boards: {},
   },
   { timestamps: true }
 );

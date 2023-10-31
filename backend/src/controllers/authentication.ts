@@ -53,8 +53,6 @@ export const login = async (req: express.Request, res: express.Response) => {
       path: '/',
     });
 
-    // const verifiedUser = await getUserByEmail(email)
-    // console.log(verifiedUser);
     return res.status(200).json(user).end();
   } catch (error) {
     console.log(error);
@@ -105,16 +103,13 @@ export const register = async (req: express.Request, res: express.Response) => {
 };
 
 export const loggedIn = async (req: express.Request, res: express.Response) => {
-  console.log('YESSS 1');
   console.log(req.cookies);
   try {
-    console.log('YESSS 2');
     const sessionToken = req.cookies['KANBAN-AUTH'];
     if (!sessionToken) {
-      console.log('YESSS 3');
       return res.sendStatus(403);
     }
-    console.log('YESSS 4');
+
     const existingUser = await getUserBySessionToken(sessionToken);
 
     if (!existingUser) {
@@ -123,7 +118,7 @@ export const loggedIn = async (req: express.Request, res: express.Response) => {
 
     _.merge(req, { identity: existingUser });
 
-    return res.status(200).json(true).end();
+    return res.status(200).json({ status: true, user: existingUser }).end();
   } catch (error) {
     console.log(error);
     return res.sendStatus(400);

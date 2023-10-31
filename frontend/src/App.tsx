@@ -38,7 +38,6 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  console.log(document.cookie);
   return (
     <AuthContextProvider>
       <RouterProvider router={router} />

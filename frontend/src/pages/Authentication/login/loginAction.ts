@@ -1,5 +1,6 @@
 import { redirect } from 'react-router-dom';
 import { useSignIn } from './useSignIn';
+import useAuthContext from '../useAuthContext';
 import axios from 'axios';
 
 interface Authentication {
@@ -27,7 +28,7 @@ export async function loginAction({ request }: { request: Request }) {
     new URL(request.url).searchParams.get('redirectTo') || '/dashboard';
   try {
     const data = await useSignIn({ email, password });
-    console.log('hi');
+    // console.log('hi');
     console.log(`data: ${data}`);
     // const user: Data = JSON.parse(data);
     // console.log(`user: ${user}`);

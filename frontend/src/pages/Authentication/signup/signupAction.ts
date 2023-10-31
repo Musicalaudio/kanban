@@ -22,5 +22,4 @@ export async function signupAction({ request }: { request: Request }) {
       return 'Sorry, there was an unexpected error, please try again later';
     }
   }
-  return null;
 }

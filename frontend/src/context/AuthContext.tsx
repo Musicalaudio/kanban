@@ -1,5 +1,4 @@
 import { ReactNode, createContext, useReducer } from 'react';
-import React from 'react';
 
 interface stateInterface {
   user: Object | null;
@@ -9,7 +8,7 @@ const initialState: stateInterface = { user: null };
 
 interface Action {
   type: string;
-  payload: string;
+  payload: Object;
 }
 
 export const authReducer = (
@@ -45,9 +44,7 @@ interface authProps {
 
 export const AuthContextProvider = ({ children }: authProps) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
-
   console.log('Authcontext state: ', state);
-
   return (
     // <AuthContext.Provider value={{ state, dispatch }}>
     <AuthContext.Provider value={{ state }}>
