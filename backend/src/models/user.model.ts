@@ -1,5 +1,25 @@
 import mongoose from 'mongoose';
-import { authSchema } from './auth.model.ts';
+
+export interface Subtasks {
+  title: String;
+  complete: boolean;
+}
+
+export interface Task {
+  title: String;
+  description: String;
+  subtask: Array<Subtasks> | [];
+}
+
+export interface Column {
+  title: string;
+  tasks: Array<Task> | [];
+}
+
+export interface Board {
+  title: String;
+  columns: Array<Column> | [];
+}
 
 const userSchema = new mongoose.Schema(
   {
@@ -13,7 +33,7 @@ const userSchema = new mongoose.Schema(
       },
       required: false,
     },
-    boards: {},
+    boards: { type: Array<Board> || [] },
   },
   { timestamps: true }
 );

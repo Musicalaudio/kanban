@@ -1,33 +1,53 @@
-import Board from '../models/board.model.ts';
+// import Board from '../models/board.model.ts';
 import mongoose from 'mongoose';
 import express from 'express';
-// get all workouts
-const getBoards = async (req: express.Request, res: express.Response) => {
-  const workouts = await Board.find({}).sort({ createdAt: -1 });
+import { Board, Column } from '../models/user.model.ts';
+import { getUserBySessionToken } from '../models/user.model.ts';
 
-  res.status(200).json(workouts);
-};
+export const createBoard = async (
+  req: express.Request,
+  res: express.Response,
+  next: express.NextFunction
+) => {
+  const { board, column } = req.body;
+  let existingUser = await getUserBySessionToken(req.cookies['KANBAN-AUTH']);
 
-// get a single board
-const getBoard = async (req: express.Request, res: express.Response) => {
-  const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: 'No such workout' });
+  if (!board.name) {
+    throw new Error('You must include a title for your board to be created.');
   }
 
-  const board = await Board.findById(id);
+  existingUser.boards.forEach((existingBoard: Board) => {
+    if (existingBoard.title === board.name) {
+      throw new Error('User cannot have multiple boards with the same name');
+    }
+  });
 
-  if (!board) {
-    return res.status(404).json({ error: 'No such workout' });
+  let columns: Array<Column> = [];
+  //if we created columns, check if column names are diplicated
+  if (column) {
+    if (new Set(column).size !== column.length) {
+      throw new Error('Cannot have multiple columns with the same name');
+    }
+
+    column.forEach((title: string) =>
+      columns.push({ title: title, tasks: [] })
+    );
   }
+  const result = { title: board.name, columns: columns };
 
-  res.status(200).json(board);
+  existingUser.boards.push(result);
+  await existingUser.save();
+  res.status(200).send(existingUser);
 };
 
-const exports = {
-  getBoards,
-  getBoard,
-};
+export const deleteBoard = () => {};
 
-export default exports;
+export const createTask = () => {};
+
+export const deleteTask = () => {};
+
+export const orderTask = () => {};
+
+export const completeSubtask = () => {};
+
+// export const

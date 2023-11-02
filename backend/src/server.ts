@@ -4,7 +4,6 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import dotenv from 'dotenv';
-import boardRoutes from './routes/boardRoutes.ts';
 import router from './routes/index.ts';
 
 dotenv.config();
@@ -31,7 +30,6 @@ app.use((req, res, next) => {
 
 // routes
 app.use('/', router());
-app.use('/api/boards', boardRoutes);
 
 // connect to mongodb with mongoose
 mongoose
