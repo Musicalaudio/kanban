@@ -10,6 +10,7 @@ export const tryCatch =
     try {
       await controller(req, res);
     } catch (error) {
+      console.log(`THIS IS THE ERROR BRUH: ${error}`);
       return next(error);
     }
   };

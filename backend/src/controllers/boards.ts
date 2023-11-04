@@ -6,8 +6,7 @@ import { getUserBySessionToken } from '../models/user.model.ts';
 
 export const createBoard = async (
   req: express.Request,
-  res: express.Response,
-  next: express.NextFunction
+  res: express.Response
 ) => {
   const { board, column } = req.body;
   let existingUser = await getUserBySessionToken(req.cookies['KANBAN-AUTH']);

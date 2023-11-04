@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 
 import dotenv from 'dotenv';
 import router from './routes/index.ts';
+import { errorHandler } from './middlewares/errorHandler.ts';
 
 dotenv.config();
 
@@ -31,6 +32,8 @@ app.use((req, res, next) => {
 // routes
 app.use('/', router());
 
+// error handling middleware only works if declared after routes
+app.use(errorHandler);
 // connect to mongodb with mongoose
 mongoose
   .connect(mongoURI)
