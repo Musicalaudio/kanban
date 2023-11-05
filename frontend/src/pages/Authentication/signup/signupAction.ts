@@ -2,7 +2,7 @@ import { redirect } from 'react-router';
 import { useSignUp } from './useSignUp';
 import axios from 'axios';
 
-export async function signupAction({ request }: { request: Request }) {
+export const signupAction = async ({ request }: { request: Request }) => {
   const formData = await request.formData();
   const username = formData.get('username');
   const email = formData.get('email');
@@ -22,4 +22,4 @@ export async function signupAction({ request }: { request: Request }) {
       return 'Sorry, there was an unexpected error, please try again later';
     }
   }
-}
+};
