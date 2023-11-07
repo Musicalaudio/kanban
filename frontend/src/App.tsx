@@ -22,7 +22,7 @@ function ErrorBoundary() {
   console.error(error);
   return <div>Dang!</div>;
 }
-
+console.log(import.meta.env.VITE_SERVER);
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/">
