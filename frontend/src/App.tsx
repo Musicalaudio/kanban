@@ -4,9 +4,9 @@ import {
   createRoutesFromElements,
   Route,
   RouterProvider,
+  useRouteError,
 } from 'react-router-dom';
 import Authentication from './pages/Authentication/Authentication';
-import Dashboard from './pages/Dashboard/Dashboard';
 import Layout from './pages/Layout/Layout';
 import { AuthContextProvider } from './context/AuthContext';
 import Error404 from './pages/Error/Error404';
@@ -15,6 +15,13 @@ import { loginAction } from './pages/Authentication/login/loginAction';
 import Signup from './pages/Authentication/signup/Signup';
 import { signupAction } from './pages/Authentication/signup/signupAction';
 import authLoader from './pages/Authentication/authLoader';
+import { dashboardAction } from './pages/Dashboard/dashboardAction';
+
+function ErrorBoundary() {
+  let error = useRouteError();
+  console.error(error);
+  return <div>Dang!</div>;
+}
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,12 +33,11 @@ const router = createBrowserRouter(
       </Route>
       <Route
         path="dashboard"
+        action={dashboardAction}
         loader={authLoader}
         element={<Layout />}
-        errorElement={<>Error</>}
-      >
-        <Route index element={<Dashboard />}></Route>
-      </Route>
+        ErrorBoundary={ErrorBoundary}
+      />
       <Route path="*" element={<Error404 />} />
     </Route>
   )

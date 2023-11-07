@@ -5,9 +5,9 @@ import Dashboard from '../Dashboard/Dashboard';
 import useAuthContext from '../Authentication/useAuthContext';
 
 const Layout = () => {
-  const { context, dispatch } = useAuthContext();
+  const { state, dispatch } = useAuthContext();
 
-  //On mount, set global user state to the value we have stored in local storage for users
+  // On mount, set global user state to the value we have stored in local storage for users
   useEffect(() => {
     dispatch({
       type: 'LOGIN',
@@ -15,10 +15,10 @@ const Layout = () => {
     });
   }, []);
 
-  //when user context is updated, also update local storage
+  // when user context is updated, also update local storage
   useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(context));
-  }, [context]);
+    localStorage.setItem('user', JSON.stringify(state));
+  }, [state]);
 
   return (
     <div className="flex">

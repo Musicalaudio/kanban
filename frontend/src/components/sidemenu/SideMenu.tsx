@@ -1,11 +1,24 @@
-import { Link } from 'react-router-dom';
 import logoLight from '../../../assets/logo-dark.svg';
 import styles from './SideMenu.module.scss';
 import ThemeSelector from './ThemeSelector';
 import Button from '../button/Button';
-import { NavLink } from 'react-router-dom';
+import CreateNewBoard from '../new-board/CreateNewBoard';
+import { useState } from 'react';
+import useAuthContext from '../../pages/Authentication/useAuthContext';
 
 const SideMenu = () => {
+  const [modal, setModal] = useState(false);
+  // const { context } = useAuthContext();
+  // console.log(context.state.user);
+
+  const closeModal = () => {
+    setModal(false);
+  };
+
+  const openModal = () => {
+    setModal(true);
+  };
+
   return (
     <nav className={styles.sidemenu}>
       {/* <Link to="/"> */}
@@ -28,13 +41,9 @@ const SideMenu = () => {
             <Button>Marketing Plan</Button>
             {/* </NavLink> */}
           </li>
-          <li>
-            {/* <NavLink> */}
-            <Button>Perform Launch</Button>
-            {/* </NavLink> */}
-          </li>
         </ul>
-        <Button>+ Create New Board</Button>
+        <Button onClick={() => openModal()}>+ Create New Board</Button>
+        <CreateNewBoard closeModal={closeModal} modal={modal} />
       </section>
       <div>
         <ThemeSelector />

@@ -16,7 +16,10 @@ export const createBoard = async (
   }
 
   existingUser.boards.forEach((existingBoard: Board) => {
-    if (existingBoard.title === board.name) {
+    if (
+      existingBoard.title.toLowerCase().trim() ===
+      board.name.toLowerCase().trim()
+    ) {
       throw new Error('User cannot have multiple boards with the same name');
     }
   });
@@ -32,7 +35,7 @@ export const createBoard = async (
       columns.push({ title: title, tasks: [] })
     );
   }
-  const result = { title: board.name, columns: columns };
+  const result = { title: board.name.trim(), columns: columns };
 
   existingUser.boards.push(result);
   await existingUser.save();

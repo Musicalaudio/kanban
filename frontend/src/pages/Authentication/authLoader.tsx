@@ -2,8 +2,8 @@ import { redirect } from 'react-router';
 import useIsAuthenticated from './useIsAuthenticated';
 
 interface AuthData {
-  status: boolean;
-  user: Object;
+  status?: boolean;
+  user?: Object;
   err?: false;
 }
 
@@ -15,6 +15,7 @@ export default async function authLoader() {
     localStorage.setItem('user', 'null');
     throw redirect('/login');
   }
+
   localStorage.setItem('loggedIn', 'true');
   localStorage.setItem('user', JSON.stringify(user));
   return null;

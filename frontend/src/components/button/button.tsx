@@ -1,13 +1,12 @@
+// import React from 'react';
 import { ReactNode } from 'react';
 
-interface buttonProps {
+interface buttonProps extends React.ComponentPropsWithoutRef<'button'> {
   children: ReactNode;
-  /*maybe include icon image to pass to button or should we do this by passing a className as
-  a variant and creating a pseudoclass for each name*/
 }
 
-const Button = ({ children }: buttonProps) => {
-  return <button>{children}</button>;
+const Button = ({ children, ...attributes }: buttonProps) => {
+  return <button {...attributes}>{children}</button>;
 };
 
 export default Button;
