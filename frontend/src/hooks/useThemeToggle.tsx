@@ -1,8 +1,8 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
 const useThemeToggle = () => {
-  const [theme, setTheme] = useState(localStorage.theme);
-  const mode = theme == 'light' ? 'dark' : 'light';
+  // const [theme, setTheme] = useState(localStorage.theme);
+  // const mode = theme == 'light' ? 'dark' : 'light';
   // return (<></>);
 };
 

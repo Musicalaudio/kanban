@@ -5,15 +5,6 @@ import styles from './Header.module.scss';
 import { useState } from 'react';
 import Dropdown from '../dropdown/Dropdown';
 
-const DropdownMenu = () => {
-  return (
-    <div>
-      <Button>Edit Board</Button>
-      <Button>Delete Board</Button>
-    </div>
-  );
-};
-
 const Header = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
 

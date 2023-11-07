@@ -44,7 +44,7 @@ const CreateNewBoard = ({ closeModal, modal }: NewBoard) => {
         </fieldset>
         <fieldset>
           <label htmlFor="cancellable-input">Board Columns</label>
-          {columns.map((element, index) => {
+          {columns.map((_element, index) => {
             return (
               <React.Fragment key={`column-${index}`}>
                 <CancellableInput

@@ -4,7 +4,6 @@ import ThemeSelector from './ThemeSelector';
 import Button from '../button/Button';
 import CreateNewBoard from '../new-board/CreateNewBoard';
 import { useState } from 'react';
-import useAuthContext from '../../pages/Authentication/useAuthContext';
 
 const SideMenu = () => {
   const [modal, setModal] = useState(false);

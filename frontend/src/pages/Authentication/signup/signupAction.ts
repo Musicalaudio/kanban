@@ -16,7 +16,7 @@ export const signupAction = async ({ request }: { request: Request }) => {
   } catch (err) {
     if (axios.isAxiosError(err)) {
       console.log(err.request.response);
-      return err.request.response;
+      return err.request.response as string;
     } else {
       console.log('Unexpected error', err);
       return 'Sorry, there was an unexpected error, please try again later';

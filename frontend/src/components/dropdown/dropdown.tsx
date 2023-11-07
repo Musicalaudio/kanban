@@ -1,4 +1,4 @@
-import { ReactHTMLElement, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface DropdownInterface extends React.ComponentPropsWithoutRef<'div'> {
   openDropdown: Boolean;

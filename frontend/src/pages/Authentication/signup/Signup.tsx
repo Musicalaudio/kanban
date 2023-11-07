@@ -4,7 +4,7 @@ import Typography from '../../../typography/Typography';
 
 const Signup = () => {
   const navigation = useNavigation();
-  const errorMessage = useActionData();
+  const errorMessage = useActionData() as string;
   return (
     <>
       <Typography tag="h1" variant="xl">
