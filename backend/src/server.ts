@@ -16,7 +16,7 @@ const mongoURI: string = process.env.URI as string;
 const port = process.env.PORT || 8000;
 
 // create express app
-const app = express();
+export const app = express();
 
 //middleware
 app.use(cors({ origin: [process.env.ORIGIN as string], credentials: true }));
@@ -51,5 +51,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
 });
-
-export default app;
