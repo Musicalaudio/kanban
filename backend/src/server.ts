@@ -19,9 +19,9 @@ const port = process.env.PORT || 8000;
 const app = express();
 
 //middleware
-// app.use(cors({ origin: [process.env.ORIGIN as string], credentials: true }));
-// app.use(cookieParser());
-// app.use(express.json());
+app.use(cors({ origin: [process.env.ORIGIN as string], credentials: true }));
+app.use(cookieParser());
+app.use(express.json());
 
 // just gives us info
 app.use((req, res, next) => {
@@ -52,4 +52,4 @@ app.listen(port, () => {
   console.log(`app is listening on port ${port}`);
 });
 
-export default app;
+export { app };
