@@ -6,7 +6,7 @@ import app from '../src/server.ts';
 // import router from '../src/routes/index.ts';
 // const app = express();
 // const port = process.env.PORT || 8000;
-//middleware
+// // middleware
 // app.use(cors({ origin: [process.env.ORIGIN as string], credentials: true }));
 // app.use(cookieParser());
 // app.use(express.json());
@@ -30,4 +30,4 @@ import app from '../src/server.ts';
 //   console.log(`app is listening on port ${port}`);
 // });
 
-export default app;
+module.exports = app;
