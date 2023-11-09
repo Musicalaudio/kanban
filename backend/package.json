@@ -5,8 +5,8 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --esm api/index.ts",
-    "start": "node api/index.ts",
+    "dev": "nodemon --esm src/server.ts",
+    "start": "node src/server.ts",
     "build": "tsc",
     "vercel-build": "echo hello"
   },
