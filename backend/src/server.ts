@@ -44,7 +44,7 @@ mongoose
     console.log(error);
   });
 
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
   res.send('Hello from Express');
 });
 
