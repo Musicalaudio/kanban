@@ -1,7 +1,7 @@
 import express from 'express';
-import { createBoard } from '../controllers/boards.ts';
-import { isAuthenticated } from '../middlewares/index.ts';
-import { tryCatch } from '../helpers/tryCatch.ts';
+import { createBoard } from '../controllers/boards.js';
+import { isAuthenticated } from '../middlewares/index.js';
+import { tryCatch } from '../helpers/tryCatch.js';
 
 // GET all board
 // router.get('/boards/all-boards', isAuthenticated, getBoards);

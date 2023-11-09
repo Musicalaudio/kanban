@@ -4,8 +4,8 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import dotenv from 'dotenv';
-import router from './routes/index.ts';
-import { errorHandler } from './middlewares/errorHandler.ts';
+import router from './routes/index.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 dotenv.config();
 

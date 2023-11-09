@@ -1,8 +1,7 @@
-// import Board from '../models/board.model.ts';
 import mongoose from 'mongoose';
 import express from 'express';
-import { Board, Column } from '../models/user.model.ts';
-import { getUserBySessionToken } from '../models/user.model.ts';
+import { Board, Column } from '../models/user.model.js';
+import { getUserBySessionToken } from '../models/user.model.js';
 
 export const createBoard = async (
   req: express.Request,

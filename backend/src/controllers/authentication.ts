@@ -3,8 +3,8 @@ import {
   getUserByEmail,
   createUser,
   getUserBySessionToken,
-} from '../models/user.model.ts';
-import { authentication, random } from '../helpers/index.ts';
+} from '../models/user.model.js';
+import { authentication, random } from '../helpers/index.js';
 import _ from 'lodash';
 
 export const login = async (req: express.Request, res: express.Response) => {
