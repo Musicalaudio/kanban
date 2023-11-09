@@ -4,9 +4,12 @@
   "description": "",
   "main": "main.js",
   "type": "module",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
-    "dev": "nodemon --esm src/index.ts",
-    "start": "node src/index.ts",
+    "dev": "nodemon --esm api/index.ts",
+    "start": "node api/index.ts",
     "build": "tsc",
     "vercel-build": "echo hello"
   },
