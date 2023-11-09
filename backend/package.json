@@ -4,9 +4,6 @@
   "description": "",
   "main": "main.js",
   "type": "module",
-  "engines": {
-    "node": "18.x"
-  },
   "scripts": {
     "dev": "nodemon --esm api/index.ts",
     "start": "node api/index.ts",
