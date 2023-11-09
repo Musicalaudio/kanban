@@ -13,7 +13,7 @@ dotenv.config();
 const mongoURI: string = process.env.URI as string;
 
 //the port that we want to connect to on our PC
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8005;
 
 // create express app
 const app = express();
