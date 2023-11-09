@@ -1,7 +1,7 @@
 import express from 'express';
 
-import { login, register, loggedIn } from '../controllers/authentication.ts';
-import { tryCatch } from '../helpers/tryCatch.ts';
+import { login, register, loggedIn } from '../controllers/authentication.js';
+import { tryCatch } from '../helpers/tryCatch.js';
 
 export default (router: express.Router) => {
   router.post('/auth/register', tryCatch(register));
