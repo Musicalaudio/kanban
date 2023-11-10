@@ -13,13 +13,13 @@ dotenv.config();
 const mongoURI: string = process.env.URI as string;
 
 //the port that we want to connect to on our PC
-const port = process.env.PORT || 8005;
+const port = process.env.PORT || 8080;
 
 // create express app
 const app = express();
 
 //middleware
-app.use(cors({ origin: [process.env.ORIGIN as string], credentials: true }));
+app.use(cors({ origin: true, credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 
@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use('/', router());
+app.use('/api', router());
 
 // error handling middleware only works if declared after routes
 app.use(errorHandler);
