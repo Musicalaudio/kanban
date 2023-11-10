@@ -8,6 +8,7 @@ export const loginAction = async ({ request }: { request: Request }) => {
   const password = formData.get('password');
   const pathname =
     new URL(request.url).searchParams.get('redirectTo') || '/dashboard';
+  console.log(pathname);
   try {
     const data = await useSignIn({ email, password });
     console.log(`data: ${data}`);

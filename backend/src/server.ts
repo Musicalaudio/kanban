@@ -13,13 +13,48 @@ dotenv.config();
 const mongoURI: string = process.env.URI as string;
 
 //the port that we want to connect to on our PC
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8050;
 
 // create express app
 const app = express();
 
 //middleware
-app.use(cors({ origin: true, credentials: true }));
+// if(proc)
+
+app.use((req, res) => {
+  //set header first to allow request or origin domain (value can be different)
+  console.log('HELLO MAAAAAAAAAAAAAAN');
+  res.setHeader(
+    'Access-Control-Allow-Origin',
+    'https://kanban-client-musicalaudio.vercel.app'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, PATCH, OPTIONS, DELETE'
+  );
+
+  //---- other code
+
+  //Preflight CORS handler
+  if (req.method === 'OPTIONS') {
+    console.log('YUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUH');
+    return res.status(200).json({
+      body: 'OK',
+    });
+  }
+});
+
+// app.use(
+//   cors({
+//     origin: 'https://kanban-client-musicalaudio.vercel.app',
+//     credentials: true,
+//   })
+// );
 app.use(cookieParser());
 app.use(express.json());
 
