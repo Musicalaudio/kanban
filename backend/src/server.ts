@@ -21,13 +21,10 @@ const app = express();
 //middleware
 // if(proc)
 
-app.use((req, res) => {
+app.use((req, res, next) => {
   //set header first to allow request or origin domain (value can be different)
   console.log('HELLO MAAAAAAAAAAAAAAN');
-  res.setHeader(
-    'Access-Control-Allow-Origin',
-    'https://kanban-client-musicalaudio.vercel.app'
-  );
+  res.setHeader('Access-Control-Allow-Origin', process.env.ORIGIN as string);
   res.setHeader(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
@@ -47,14 +44,15 @@ app.use((req, res) => {
       body: 'OK',
     });
   }
+  next();
 });
 
-// app.use(
-//   cors({
-//     origin: 'https://kanban-client-musicalaudio.vercel.app',
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: process.env.ORIGIN as string,
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 
