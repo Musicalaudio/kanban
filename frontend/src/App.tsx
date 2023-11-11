@@ -17,6 +17,8 @@ import { signupAction } from './pages/Authentication/signup/signupAction';
 import authLoader from './pages/Authentication/authLoader';
 import { dashboardAction } from './pages/Dashboard/dashboardAction';
 
+console.log(import.meta.env.VITE_SERVER);
+
 function ErrorBoundary() {
   let error = useRouteError();
   console.error(error);
