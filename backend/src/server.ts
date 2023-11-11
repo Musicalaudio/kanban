@@ -21,31 +21,31 @@ const app = express();
 //middleware
 // if(proc)
 
-app.use((req, res, next) => {
-  //set header first to allow request or origin domain (value can be different)
-  console.log('HELLO MAAAAAAAAAAAAAAN');
-  res.setHeader('Access-Control-Allow-Origin', process.env.ORIGIN as string);
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, PUT, PATCH, OPTIONS, DELETE'
-  );
+// const corsTest = app.use((req, res, next) => {
+//   //set header first to allow request or origin domain (value can be different)
+//   console.log('HELLO MAAAAAAAAAAAAAAN');
+//   res.setHeader('Access-Control-Allow-Origin', process.env.ORIGIN as string);
+//   res.setHeader(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept'
+//   );
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
+//   res.setHeader(
+//     'Access-Control-Allow-Methods',
+//     'GET, POST, PUT, PATCH, OPTIONS, DELETE'
+//   );
 
-  //---- other code
-
-  //Preflight CORS handler
-  if (req.method === 'OPTIONS') {
-    console.log('YUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUH');
-    return res.status(200).json({
-      body: 'OK',
-    });
-  }
-  next();
-});
+//   //---- other code
+//   console.log(req.method);
+//   //Preflight CORS handler
+//   if (req.method === 'OPTIONS') {
+//     console.log('YUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUH');
+//     return res.status(200).json({
+//       body: 'OK',
+//     });
+//   }
+//   next();
+// });
 
 app.use(
   cors({

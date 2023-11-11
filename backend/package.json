@@ -6,8 +6,10 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon --esm src/server.ts",
-    "start": "node src/server.ts",
     "build": "tsc",
+    "prestart": "npm run build",
+    "start": "ts-node-esm src/server.ts",
+    "test": "jest",
     "vercel-build": "echo hello"
   },
   "keywords": [],
