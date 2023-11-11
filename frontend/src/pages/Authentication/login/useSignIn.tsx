@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const useSignIn = async (creds: any) => {
+  console.log(import.meta.env.VITE_SERVER);
   const res = await axios.post(
     `${import.meta.env.VITE_SERVER}/auth/login`,
     creds,
