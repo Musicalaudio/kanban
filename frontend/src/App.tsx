@@ -18,6 +18,7 @@ import authLoader from './pages/Authentication/authLoader';
 import { dashboardAction } from './pages/Dashboard/dashboardAction';
 
 console.log(import.meta.env.VITE_SERVER);
+console.log(`PROCESS: ${process.env.VITE_SERVER}`);
 
 function ErrorBoundary() {
   let error = useRouteError();
