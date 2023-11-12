@@ -7,6 +7,10 @@ import {
 import { authentication, random } from '../helpers/index.js';
 import _ from 'lodash';
 
+export const test = async (req: express.Request, res: express.Response) => {
+  res.send('TEST');
+};
+
 export const login = async (req: express.Request, res: express.Response) => {
   const { email, password } = req.body;
 
@@ -38,7 +42,7 @@ export const login = async (req: express.Request, res: express.Response) => {
   await user.save();
 
   res.cookie('KANBAN-AUTH', user.authentication.sessionToken, {
-    domain: 'localhost',
+    domain: 'kanban-musicalaudio',
     path: '/',
   });
 
