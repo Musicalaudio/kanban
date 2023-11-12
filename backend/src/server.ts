@@ -17,7 +17,7 @@ const port = process.env.PORT || 8050;
 
 // create express app
 const app = express();
-
+app.set('trust proxy', 1);
 //middleware
 // if(proc)
 
