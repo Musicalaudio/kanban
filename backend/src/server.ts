@@ -6,8 +6,8 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import router from './routes/index.js';
 import { errorHandler } from './middlewares/errorHandler.js';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+// import { fileURLToPath } from 'url';
+// import { dirname } from 'path';
 
 dotenv.config();
 
@@ -67,12 +67,12 @@ app.use((req, res, next) => {
 });
 
 // routes
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/dist/');
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(__dirname + '/dist/');
+// });
 app.use('/api', router());
 // error handling middleware only works if declared after routes
 app.use(errorHandler);
