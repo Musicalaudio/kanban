@@ -1,10 +1,11 @@
 import './scss/main.scss';
 import {
-  createBrowserRouter,
+  // createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
   useRouteError,
+  createHashRouter,
 } from 'react-router-dom';
 import Authentication from './pages/Authentication/Authentication';
 import Layout from './pages/Layout/Layout';
@@ -18,7 +19,7 @@ import authLoader from './pages/Authentication/authLoader';
 import { dashboardAction } from './pages/Dashboard/dashboardAction';
 
 console.log(`VITE: ${import.meta.env.VITE_SERVER} `);
-console.log(`PROCESS: ${process.env.VITE_SERVER}`);
+// console.log(`PROCESS: ${process.env.VITE_SERVER}`);
 
 function ErrorBoundary() {
   let error = useRouteError();
@@ -26,7 +27,27 @@ function ErrorBoundary() {
   return <div>Dang!</div>;
 }
 console.log(import.meta.env.VITE_SERVER);
-const router = createBrowserRouter(
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <Route path="/">
+//       <Route element={<Authentication />}>
+//         <Route index element={<Login />} action={loginAction} />
+//         <Route index path="login" element={<Login />} action={loginAction} />
+//         <Route path="signup" element={<Signup />} action={signupAction} />
+//       </Route>
+//       <Route
+//         path="dashboard"
+//         action={dashboardAction}
+//         loader={authLoader}
+//         element={<Layout />}
+//         ErrorBoundary={ErrorBoundary}
+//       />
+//       <Route path="*" element={<Error404 />} />
+//     </Route>
+//   )
+// );
+
+const hashRouter = createHashRouter(
   createRoutesFromElements(
     <Route path="/">
       <Route element={<Authentication />}>
@@ -49,7 +70,7 @@ const router = createBrowserRouter(
 function App() {
   return (
     <AuthContextProvider>
-      <RouterProvider router={router} />
+      <RouterProvider router={hashRouter} />
     </AuthContextProvider>
   );
 }

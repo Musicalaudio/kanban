@@ -6,8 +6,8 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import router from './routes/index.js';
 import { errorHandler } from './middlewares/errorHandler.js';
-// import { fileURLToPath } from 'url';
-// import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 dotenv.config();
 
@@ -49,6 +49,9 @@ app.set('trust proxy', 1);
 //   next();
 // });
 
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
+
 app.use('/', express.static('dist'));
 
 app.use(
@@ -67,8 +70,6 @@ app.use((req, res, next) => {
 });
 
 // routes
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
 
 // app.get('/', (req, res) => {
 //   res.sendFile(__dirname + '/dist/');
