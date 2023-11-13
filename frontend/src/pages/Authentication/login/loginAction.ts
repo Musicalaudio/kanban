@@ -12,6 +12,7 @@ export const loginAction = async ({ request }: { request: Request }) => {
   try {
     const data = await useSignIn({ email, password });
     console.log(`data: ${data}`);
+    console.log(`cookie: ${document.cookie}`);
     return redirect(pathname);
   } catch (err) {
     if (axios.isAxiosError(err)) {
