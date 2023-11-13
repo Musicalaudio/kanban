@@ -47,7 +47,7 @@ app.set('trust proxy', 1);
 //   next();
 // });
 
-app.use(express.static('dist'));
+app.use('/', express.static('dist'));
 
 app.use(
   cors({
