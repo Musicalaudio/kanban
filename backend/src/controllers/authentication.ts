@@ -47,7 +47,7 @@ export const login = async (req: express.Request, res: express.Response) => {
     sameSite: 'none',
     secure: true,
   });
-
+  console.log(res.cookie);
   return res.status(200).json(user).end();
 };
 
