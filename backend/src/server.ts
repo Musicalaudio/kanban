@@ -71,7 +71,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/dist/index.html');
+  res.sendFile(__dirname + '/dist/index.html/');
 });
 app.use('/api', router());
 // error handling middleware only works if declared after routes
