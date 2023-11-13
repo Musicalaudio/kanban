@@ -65,8 +65,10 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/dist/index.html');
+});
 app.use('/api', router());
-
 // error handling middleware only works if declared after routes
 app.use(errorHandler);
 // connect to mongodb with mongoose
