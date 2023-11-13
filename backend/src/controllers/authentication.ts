@@ -42,7 +42,7 @@ export const login = async (req: express.Request, res: express.Response) => {
   await user.save();
 
   res.cookie('KANBAN-AUTH', user.authentication.sessionToken, {
-    domain: '.kanban-musicalaudio.netlify.app',
+    domain: 'kanban-client-musicalaudio.vercel.app',
     path: '/',
     sameSite: 'none',
     secure: true,
