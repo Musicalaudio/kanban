@@ -44,6 +44,8 @@ export const login = async (req: express.Request, res: express.Response) => {
   res.cookie('KANBAN-AUTH', user.authentication.sessionToken, {
     domain: 'kanban-musicalaudio.netlify.app',
     path: '/',
+    sameSite: 'none',
+    secure: true,
   });
 
   return res.status(200).json(user).end();
