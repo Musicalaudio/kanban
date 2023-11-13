@@ -42,7 +42,7 @@ export const login = async (req: express.Request, res: express.Response) => {
   await user.save();
 
   res.cookie('KANBAN-AUTH', user.authentication.sessionToken, {
-    domain: 'kanban-musicalaudio.netlify.app',
+    domain: 'kanban-musicalaudio.vercel.app/',
     path: '/',
     sameSite: 'none',
     secure: true,
@@ -89,14 +89,12 @@ export const register = async (req: express.Request, res: express.Response) => {
 export const loggedIn = async (req: express.Request, res: express.Response) => {
   const sessionToken = req.cookies['KANBAN-AUTH'];
   if (!sessionToken) {
-    // return res.sendStatus(403);
     throw new Error('Session is no longer valid.');
   }
 
   const existingUser = await getUserBySessionToken(sessionToken);
 
   if (!existingUser) {
-    // return res.sendStatus(403);
     throw new Error(
       'User and/or password is incorrect, please enter a valid combination.'
     );
