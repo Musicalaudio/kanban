@@ -32,7 +32,7 @@ const CreateNewBoard = ({ closeModal, modal }: NewBoard) => {
         <Typography tag="h2" variant="l">
           Add New Board
         </Typography>
-        <input hidden name="formID" defaultValue="create-new-board" />
+        <input hidden name="formID" defaultValue="create-board" />
         <fieldset>
           <label>Board Name</label>
           <input

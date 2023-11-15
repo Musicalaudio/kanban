@@ -1,5 +1,5 @@
 import axios from 'axios';
-import createNewBoardAction from '../../components/new-board/createNewBoardAction';
+import createNewBoardAction from '../../components/board/createNewBoardAction';
 
 export const dashboardAction = async ({ request }: { request: Request }) => {
   const formData = await request.formData();
@@ -7,7 +7,7 @@ export const dashboardAction = async ({ request }: { request: Request }) => {
   const formID = formData.get('formID');
   try {
     switch (formID) {
-      case 'create-new-board':
+      case 'create-board':
         const data = await createNewBoardAction(formData);
         console.log(`THIS IS THE ACTION DATA: ${data}`);
         return JSON.parse(data);

@@ -2,7 +2,7 @@ import logoLight from '../../../assets/logo-dark.svg';
 import styles from './SideMenu.module.scss';
 import ThemeSelector from './ThemeSelector';
 import Button from '../button/Button';
-import CreateNewBoard from '../new-board/CreateNewBoard';
+import CreateNewBoard from '../board/CreateNewBoard';
 import { useState } from 'react';
 
 const SideMenu = () => {
