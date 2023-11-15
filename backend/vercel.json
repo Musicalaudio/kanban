@@ -26,7 +26,7 @@
       "dest": "dist/index.html"
     },
     {
-      "src": "/(.+)",
+      "src": "/(.*)",
       "dest": "dist/$1"
     }
   ]
