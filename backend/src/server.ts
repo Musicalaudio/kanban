@@ -23,7 +23,7 @@ app.set('trust proxy', 1);
 const appRouter = express.Router();
 //middleware
 
-app.get('/*', express.static('dist'));
+app.use('/', express.static('dist'));
 
 app.use(
   cors({
