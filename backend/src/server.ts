@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import router from './routes/index.js';
 import { errorHandler } from './middlewares/errorHandler.js';
-import serverless from 'serverless-http';
+// import serverless from 'serverless-http';
 
 dotenv.config();
 
