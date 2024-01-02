@@ -1,8 +1,81 @@
+@use '../../scss/abstracts/colors' as *;
+
 .dashboard {
+  background-color: $color-neutral-100;
   display: grid;
-  height: 100%; //this causes overflow, come back to later
-  &__empty {
-    place-self: center;
+  padding: 1.5rem;
+  width: 100%;
+  &[data-columns='empty'] {
+    place-items: center;
     text-align: center;
+    div {
+      display: grid;
+      gap: 1.5rem;
+      justify-items: center;
+    }
+
+    p {
+      color: $color-neutral-200;
+    }
+
+    button {
+      width: fit-content;
+    }
   }
+
+  &[data-columns='columns'] {
+    gap: 1.5rem;
+    overflow-x: scroll;
+    grid-auto-flow: column;
+    grid-auto-columns: 17.5rem;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+  }
+}
+
+.new-column {
+  // margin: auto;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: $color-neutral-200;
+  background: linear-gradient(
+    180deg,
+    #e9effa 0%,
+    rgba(233, 239, 250, 0.5) 100%
+  );
+
+  &:hover {
+    h3 {
+      color: $color-primary-400;
+    }
+  }
+}
+
+.task {
+  background-color: $color-neutral-50;
+  box-shadow: 0px 4px 6px 0px $color-neutral-150;
+  padding: 1.44rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  p {
+    color: $color-neutral-200;
+  }
+}
+
+.new-column {
+  color: $color-neutral-200;
 }

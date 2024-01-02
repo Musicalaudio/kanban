@@ -1,6 +1,5 @@
 import './scss/main.scss';
 import {
-  // createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
@@ -17,35 +16,15 @@ import Signup from './pages/Authentication/signup/Signup';
 import { signupAction } from './pages/Authentication/signup/signupAction';
 import authLoader from './pages/Authentication/authLoader';
 import { dashboardAction } from './pages/Dashboard/dashboardAction';
-
-console.log(`VITE: ${import.meta.env.VITE_SERVER} `);
-// console.log(`PROCESS: ${process.env.VITE_SERVER}`);
+import DashboardLayout from './pages/Dashboard/DashboardLayout';
+import { useContext } from 'react';
+import { ThemeContext } from './context/ThemeContext';
 
 function ErrorBoundary() {
   let error = useRouteError();
   console.error(error);
   return <div>Dang!</div>;
 }
-console.log(import.meta.env.VITE_SERVER);
-// const router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route path="/">
-//       <Route element={<Authentication />}>
-//         <Route index element={<Login />} action={loginAction} />
-//         <Route index path="login" element={<Login />} action={loginAction} />
-//         <Route path="signup" element={<Signup />} action={signupAction} />
-//       </Route>
-//       <Route
-//         path="dashboard"
-//         action={dashboardAction}
-//         loader={authLoader}
-//         element={<Layout />}
-//         ErrorBoundary={ErrorBoundary}
-//       />
-//       <Route path="*" element={<Error404 />} />
-//     </Route>
-//   )
-// );
 
 const hashRouter = createHashRouter(
   createRoutesFromElements(
@@ -61,16 +40,22 @@ const hashRouter = createHashRouter(
         loader={authLoader}
         element={<Layout />}
         ErrorBoundary={ErrorBoundary}
-      />
+      >
+        <Route path=":board" element={<DashboardLayout />} />
+      </Route>
       <Route path="*" element={<Error404 />} />
     </Route>
   )
 );
 
 function App() {
+  const themeContext = useContext(ThemeContext);
+
   return (
     <AuthContextProvider>
-      <RouterProvider router={hashRouter} />
+      <div className="App" data-theme={themeContext?.theme}>
+        <RouterProvider router={hashRouter} />
+      </div>
     </AuthContextProvider>
   );
 }

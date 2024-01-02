@@ -10,10 +10,10 @@ export default async function useIsAuthenticated() {
     }
   );
   try {
-    console.log(res.data);
+    // console.log(res.data);
     return { status: res.data.status, user: res.data.user };
   } catch (err) {
-    console.log(err);
+    console.log(`THIS IS THE ERROR ${err}`);
     return { status: false, user: {}, error: err };
   }
 }

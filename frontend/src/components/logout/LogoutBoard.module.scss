@@ -1,0 +1,12 @@
+.logout-board {
+  display: grid;
+  gap: 1.5rem;
+
+  &__btns {
+    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}

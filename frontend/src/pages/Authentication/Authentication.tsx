@@ -1,18 +1,27 @@
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import styles from './Authentication.module.scss';
-import Guest from './Guest';
-
+import useAuthContext from './useAuthContext';
+import logo from '../../../assets/logo-dark.svg';
 const Authentication = () => {
-  return (
-    <div className={styles.login}>
-      <section className={styles.login__guest}>
-        <Guest />
-      </section>
-      <section className={styles.login__account}>
-        <Outlet />
-      </section>
-    </div>
-  );
+  const { state } = useAuthContext();
+
+  if (
+    localStorage.getItem('loggedIn') &&
+    localStorage.getItem('loggedIn') === 'true' &&
+    state &&
+    state.user != null
+  ) {
+    return <Navigate to="/dashboard" />;
+  } else {
+    return (
+      <div className={styles.login}>
+        <section className={styles.login__account}>
+          <img src={logo} alt="logo" />
+          <Outlet />
+        </section>
+      </div>
+    );
+  }
 };
 
 export default Authentication;

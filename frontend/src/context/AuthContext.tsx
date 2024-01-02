@@ -1,20 +1,31 @@
 import { ReactNode, createContext, useReducer } from 'react';
 
+interface User {
+  __v?: Number;
+  _id?: String;
+  email?: String;
+  username?: String;
+  authentication?: Object;
+  createdAt?: String;
+  updatedAt?: String;
+  boards?: Array<any>;
+}
+
 interface stateInterface {
-  user: Object | null;
+  user: User | null;
 }
 
 const initialState: stateInterface = { user: null };
 
 interface Action {
-  type: 'LOGIN' | 'LOGOUT';
-  payload: stateInterface;
+  type: 'LOGIN' | 'LOGOUT' | 'ADD-COLUMN';
+  payload: User | null;
 }
 
 export const authReducer = (state: stateInterface, action: Action) => {
   switch (action.type) {
     case 'LOGIN':
-      console.log(`LOGIN PAYLOAD: ${JSON.stringify(action.payload)}`);
+      console.log(`LOGIN STATE: ${JSON.stringify(state)}`);
       return { user: action.payload };
     case 'LOGOUT':
       console.log(`LOGOUT PAYLOAD: ${JSON.stringify(action.payload)}`);
@@ -35,8 +46,11 @@ interface authProps {
 }
 
 export const AuthContextProvider = ({ children }: authProps) => {
-  const [state, dispatch] = useReducer(authReducer, initialState);
-  console.log('Authcontext state: ', state);
+  const [state, dispatch] = useReducer<React.Reducer<stateInterface, Action>>(
+    authReducer,
+    initialState
+  );
+
   return (
     <AuthContext.Provider value={{ state, dispatch }}>
       {children}

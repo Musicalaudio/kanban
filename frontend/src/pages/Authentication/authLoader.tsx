@@ -8,15 +8,22 @@ interface AuthData {
 }
 
 export default async function authLoader() {
-  const { status, user }: AuthData = await useIsAuthenticated();
-
-  if (!status) {
+  console.log('TESTING');
+  // if(localStorage.get)
+  try {
+    const { status, user }: AuthData = await useIsAuthenticated();
+    localStorage.setItem('loggedIn', 'true');
+    localStorage.setItem('user', JSON.stringify(user));
+    return user;
+  } catch {
     localStorage.setItem('loggedIn', 'false');
     localStorage.setItem('user', 'null');
     throw redirect('/login');
   }
 
-  localStorage.setItem('loggedIn', 'true');
-  localStorage.setItem('user', JSON.stringify(user));
-  return null;
+  // if (!status) {
+  //   localStorage.setItem('loggedIn', 'false');
+  //   localStorage.setItem('user', 'null');
+  //   throw redirect('/login');
+  // }
 }

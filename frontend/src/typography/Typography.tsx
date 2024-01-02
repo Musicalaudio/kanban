@@ -2,8 +2,15 @@ import { ReactNode } from 'react';
 
 interface TypographyProps {
   tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
-  variant: 'xl' | 'l' | 'm' | 's' | 'xs';
+  variant:
+    | 'heading-xl'
+    | 'heading-l'
+    | 'heading-m'
+    | 'heading-s'
+    | 'body-l'
+    | 'body-m';
   font?: 'base' | 'accent';
+  className?: string;
   children: ReactNode;
 }
 
@@ -14,13 +21,13 @@ const Typography = ({
   tag,
   variant,
   children,
-  font = 'base',
+  className,
   ...props
 }: TypographyProps) => {
   const Component = tag;
 
   return (
-    <Component className={`heading-${variant} ff-${font}`} {...props}>
+    <Component className={`${variant} ${className}`} {...props}>
       {children}
     </Component>
   );

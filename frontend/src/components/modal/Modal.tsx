@@ -5,9 +5,10 @@ interface ModalProps extends React.HTMLAttributes<HTMLDialogElement> {
   closeModal: () => void;
   modal: Boolean;
   children: ReactNode;
+  className?: string;
 }
 
-const Modal = ({ modal, closeModal, children }: ModalProps) => {
+const Modal = ({ modal, closeModal, className, children }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ const Modal = ({ modal, closeModal, children }: ModalProps) => {
   const dialog: JSX.Element | null = modal ? (
     <dialog
       ref={dialogRef}
-      className={styles.modal}
+      className={`${styles.modal} ${className ? className : ''}`}
       onKeyDown={(e) => handleEscape(e)}
     >
       {children}

@@ -3,3 +3,12 @@
   flex-direction: column;
   position: relative;
 }
+
+.board-columns p {
+  padding-bottom: 0;
+}
+
+.board-columns {
+  display: grid;
+  gap: 0.5rem;
+}

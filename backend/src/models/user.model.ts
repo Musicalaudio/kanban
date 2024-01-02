@@ -1,25 +1,26 @@
 import mongoose from 'mongoose';
+import Board from './board.model.js';
 
-export interface Subtasks {
-  title: String;
-  complete: boolean;
-}
+// export interface Subtasks {
+//   title: String;
+//   complete: boolean;
+// }
 
-export interface Task {
-  title: String;
-  description: String;
-  subtask: Array<Subtasks> | [];
-}
+// export interface Task {
+//   title: String;
+//   description: String;
+//   subtask: Array<Subtasks> | [];
+// }
 
-export interface Column {
-  title: string;
-  tasks: Array<Task> | [];
-}
+// export interface Column {
+//   title: string;
+//   tasks: Array<Task> | [];
+// }
 
-export interface Board {
-  title: String;
-  columns: Array<Column> | [];
-}
+// export interface Board {
+//   title: String;
+//   columns: Array<Column> | [];
+// }
 
 const userSchema = new mongoose.Schema(
   {
@@ -33,43 +34,42 @@ const userSchema = new mongoose.Schema(
       },
       required: false,
     },
-    boards: { type: Array<Board> || [] },
+    boards: { type: [Board.schema] || [] },
   },
   { timestamps: true }
 );
 
-export const UserModel =
-  mongoose.models.User || mongoose.model('User', userSchema);
+export const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 // User Actions
 
 //find user
-export const getUsers = () => UserModel.find();
+export const getUsers = () => User.find();
 
 //get user email
-export const getUserByEmail = (email: string) => UserModel.findOne({ email });
+export const getUserByEmail = (email: string) => User.findOne({ email });
 
 //get user email
 export const getUserByUsername = (username: string) =>
-  UserModel.findOne({ username });
+  User.findOne({ username });
 
 //get user by session token
 export const getUserBySessionToken = (sessionToken: string) =>
-  UserModel.findOne({ 'authentication.sessionToken': sessionToken });
+  User.findOne({ 'authentication.sessionToken': sessionToken });
 
 //get user by id
-export const getUserById = (id: string) => UserModel.findById(id);
+export const getUserById = (id: string) => User.findById(id);
 
 //create new user
 export const createUser = (values: Record<string, any>) =>
-  new UserModel(values)
+  new User(values)
     .save()
     .then((user: { toObject: () => any }) => user.toObject());
 
 //delete user by id
 export const deleteUserById = (id: string) =>
-  UserModel.findOneAndDelete({ _id: id });
+  User.findOneAndDelete({ _id: id });
 
 //update user by id
 export const updateUserById = (id: string, values: Record<string, any>) =>
-  UserModel.findByIdAndUpdate(id, values);
+  User.findByIdAndUpdate(id, values);

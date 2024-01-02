@@ -3,13 +3,10 @@ import {
   getUserByEmail,
   createUser,
   getUserBySessionToken,
+  getUserByUsername,
 } from '../models/user.model.js';
 import { authentication, random } from '../helpers/index.js';
 import _ from 'lodash';
-
-export const test = async (req: express.Request, res: express.Response) => {
-  res.send('TEST');
-};
 
 export const login = async (req: express.Request, res: express.Response) => {
   const { email, password } = req.body;
@@ -42,7 +39,7 @@ export const login = async (req: express.Request, res: express.Response) => {
   await user.save();
 
   res.cookie('KANBAN-AUTH', user.authentication.sessionToken, {
-    domain: '.kanban-odr9.onrender.com',
+    domain: 'localhost',
     path: '/',
     sameSite: 'none',
     secure: true,
@@ -58,17 +55,29 @@ export const register = async (req: express.Request, res: express.Response) => {
   }
 
   const existingUser = await getUserByEmail(email);
-  const existingUsername = await getUserByEmail(username);
-
-  if (existingUser) {
-    throw new Error(
-      "A confirmation email has been sent to that email address, assuming it's not already in use."
-    );
-  }
+  const existingUsername = await getUserByUsername(username);
 
   if (existingUsername) {
     throw new Error(
-      'That username is already taken, please enter another one.'
+      '{"usernameError": "That username is already taken, please enter another one."}'
+    );
+  }
+
+  if (username.length < 5) {
+    throw new Error(
+      '{"usernameError": "Username must be atleast 5 characters long"}'
+    );
+  }
+
+  if (existingUser) {
+    throw new Error(
+      '{"emailError": "That email is already in use, please enter another one."}'
+    );
+  }
+
+  if (password.length < 5) {
+    throw new Error(
+      '{"passwordError": "Password must be atleast 5 characters long"}'
     );
   }
 
@@ -102,5 +111,38 @@ export const loggedIn = async (req: express.Request, res: express.Response) => {
 
   _.merge(req, { identity: existingUser });
 
-  return res.status(200).json({ status: true, user: existingUser }).end();
+  return res
+    .status(200)
+    .json({
+      status: true,
+      user: existingUser,
+      message:
+        '{"confirmation": "A confirmation email has been sent to that email address, assuming it\'s not already in use."}',
+    })
+    .end();
+};
+
+export const logout = async (req: express.Request, res: express.Response) => {
+  const sessionToken = req.cookies['KANBAN-AUTH'];
+  if (!sessionToken) {
+    throw new Error('Session is no longer valid.');
+  }
+  console.log('THIS IS THE LGOUT CONTROLLER');
+  const existingUser = await getUserBySessionToken(sessionToken);
+  if (sessionToken) {
+    res.cookie('KANBAN-AUTH', 'none', {
+      domain: 'localhost',
+      path: '/',
+      sameSite: 'none',
+      secure: true,
+    });
+  }
+  return res
+    .status(200)
+    .json({
+      status: true,
+      user: existingUser,
+      message: 'User logged out successfully',
+    })
+    .end();
 };

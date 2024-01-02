@@ -8,12 +8,12 @@ const Login = () => {
 
   return (
     <>
-      <Typography tag="h1" variant="xl">
+      <Typography tag="h1" variant="heading-xl">
         Sign in to your account
       </Typography>
       {errorMessage && (
-        <Typography tag="p" variant="s">
-          errorMessage
+        <Typography tag="p" variant="heading-s">
+          {errorMessage as string}
         </Typography>
       )}
       <Form method="post" className="login__form" replace>

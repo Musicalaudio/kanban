@@ -1,12 +1,78 @@
+@use '../../scss/abstracts/colors' as *;
+
 .header {
-  background-color: var(--neutral-400);
-  border-bottom: var(--neutral-150) 0.0625rem solid;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  background-color: $color-neutral-50;
+  position: relative;
+  > * {
+    padding-inline: 1.5rem;
+    padding-block: 1.25rem 1.25rem;
+  }
+
+  &__logo {
+    min-width: 18.75rem;
+  }
+
+  &__main {
+    display: flex;
+    border-bottom: var(--neutral-150) 0.0625rem solid;
+    border-left: var(--neutral-150) 0.0625rem solid;
+    flex-grow: 1;
+    align-items: center;
+  }
 
   &__btns {
+    margin-left: auto;
     display: flex;
-    align-content: center;
+    gap: 1.5rem;
+    align-items: center;
+    // justify-content: space-between;
+  }
+
+  h1 {
+    overflow: hidden;
+    overflow-wrap: unset;
+    text-overflow: ellipsis;
+  }
+
+  img {
+    max-width: revert;
+  }
+
+  .add-task__button {
+    img {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 48rem) {
+  .header {
+    border-bottom: var(--neutral-150) 0.0625rem solid;
+    padding-inline: 1rem;
+    gap: 1rem;
+    > * {
+      padding-inline: 0rem;
+      padding-block: 1.25rem 1.25rem;
+    }
+    &__logo {
+      min-width: auto;
+    }
+
+    &__main {
+      border-bottom: 0;
+      border-left: 0;
+    }
+
+    .add-task__button {
+      p {
+        display: none;
+      }
+
+      img {
+        display: block;
+      }
+    }
   }
 }

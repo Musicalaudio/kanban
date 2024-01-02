@@ -7,7 +7,46 @@
     }
   }
 
+  // @each $category, $colors in $active-theme {
+  //   @each $shade, $value in $colors {
+  //     .clr-#{$category}-#{$shade} {
+  //       color: var(--#{$shade}-#{$value});
+  //     }
+  //   }
+  // }
+
+  // @media (prefers-color-scheme: dark) {
+  //   @each $color, $shade-map in $dark {
+  //     @each $shade, $value in $shade-map {
+  //       --#{$color}-#{$shade}: #{$value};
+  //     }
+  //   }
+  // }
+
+  // @media (prefers-color-scheme: light) {
+  //   @each $color, $shade-map in $dark {
+  //     @each $shade, $value in $shade-map {
+  //       --#{$color}-#{$shade}: #{$value};
+  //     }
+  //   }
+  // }
+
   @each $size-prop, $size-value in $font-sizes {
     --ff-#{$size-prop}: #{$size-value};
+  }
+}
+
+.App[data-theme='light'] {
+  @each $color, $shade-map in $light {
+    @each $shade, $value in $shade-map {
+      --#{$color}-#{$shade}: #{$value};
+    }
+  }
+}
+.App[data-theme='dark'] {
+  @each $color, $shade-map in $dark {
+    @each $shade, $value in $shade-map {
+      --#{$color}-#{$shade}: #{$value};
+    }
   }
 }

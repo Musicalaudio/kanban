@@ -1,0 +1,45 @@
+@use '../../scss/abstracts/colors' as *;
+
+.subtasks {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.delete-modal,
+.logout-modal {
+  display: grid;
+  gap: 1.5rem;
+
+  &__btns {
+    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+.add-task,
+.edit-task,
+.edit-board {
+  p {
+    padding-bottom: 0.5rem;
+  }
+
+  .subtasks p {
+    padding-bottom: 0;
+  }
+}
+
+.delete-board {
+  display: grid;
+  gap: 1.5rem;
+
+  &__btns {
+    display: flex;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}

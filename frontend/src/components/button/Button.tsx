@@ -2,7 +2,7 @@
 import { ReactNode } from 'react';
 
 interface buttonProps extends React.ComponentPropsWithoutRef<'button'> {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const Button = ({ children, ...attributes }: buttonProps) => {

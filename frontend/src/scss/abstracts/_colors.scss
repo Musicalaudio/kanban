@@ -18,10 +18,11 @@ $-clr-green-200: hsl(154, 68%, 64%, 1);
 
 $light: (
   'neutral': (
-    000: $-clr-white-400,
+    50: $-clr-white-400,
     100: $-clr-white-500,
     150: $-clr-grey-100,
     200: $-clr-grey-200,
+    400: $-clr-black-400,
   ),
   'primary': (
     200: $-clr-purple-200,
@@ -44,13 +45,15 @@ $light: (
 
 $dark: (
   'neutral': (
-    000: $-clr-grey-500,
+    50: $-clr-grey-500,
     100: $-clr-grey-600,
     150: $-clr-grey-300,
     200: $-clr-grey-200,
+    400: $-clr-white-400,
   ),
   'primary': (
-    300: $-clr-purple-200,
+    200: $-clr-purple-200,
+    300: $-clr-purple-300,
     400: $-clr-purple-400,
   ),
   'secondary': (
@@ -58,7 +61,7 @@ $dark: (
     400: $-clr-white-400,
   ),
   'accent': (
-    000: $-clr-white-400,
+    50: $-clr-white-400,
     100: $-clr-green-200,
     200: $-clr-blue-200,
     300: $-clr-purple-300,
@@ -66,3 +69,21 @@ $dark: (
     500: $-clr-pink-400,
   ),
 );
+
+//global colour tokens
+$color-neutral-50: var(--neutral-50);
+$color-neutral-100: var(--neutral-100);
+$color-neutral-150: var(--neutral-150);
+$color-neutral-200: var(--neutral-200);
+$color-neutral-400: var(--neutral-400);
+$color-primary-200: var(--primary-200);
+$color-primary-300: var(--primary-300);
+$color-primary-400: var(--primary-400);
+$color-secondary-300: var(--secondary-300);
+$color-secondary-400: var(--secondary-400);
+$color-accent-50: var(--accent-50);
+$color-accent-100: var(--accent-100);
+$color-accent-200: var(--accent-200);
+$color-accent-300: var(--accent-300);
+$color-accent-400: var(--accent-400);
+$color-accent-500: var(--accent-500);

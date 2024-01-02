@@ -1,0 +1,55 @@
+@use '../../scss/abstracts/colors' as *;
+.btn {
+  text-align: center;
+  line-height: 1.4375rem;
+  font-weight: 700;
+  line-height: 15px;
+  border-radius: 1.5rem;
+  font-size: 0.8125rem;
+  padding-block: 0.87rem 0.94rem;
+  border-radius: 1.5rem;
+  border: none;
+  cursor: pointer;
+  &__primary {
+    background-color: $color-primary-400;
+    color: hsl(0, 0%, 100%);
+
+    &--l {
+      background-color: $color-primary-400;
+      color: hsl(0, 0%, 100%);
+      font-weight: 700;
+      padding-inline: 1.5rem;
+      font-size: 0.9375rem;
+      &:hover {
+        background-color: $color-primary-200;
+      }
+
+      &:disabled {
+        background-color: $color-primary-200;
+        cursor: initial;
+      }
+    }
+
+    &:hover {
+      background-color: $color-primary-200;
+    }
+  }
+
+  &__secondary {
+    background-color: $color-secondary-300;
+    color: $color-primary-400;
+
+    &:hover {
+      background-color: $color-secondary-400;
+    }
+  }
+
+  &__destructive {
+    background-color: $color-accent-500;
+    color: $color-neutral-50;
+
+    &:hover {
+      background-color: $color-accent-400;
+    }
+  }
+}
