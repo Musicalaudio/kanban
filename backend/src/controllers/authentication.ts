@@ -40,7 +40,7 @@ export const login = async (req: express.Request, res: express.Response) => {
   await user.save();
 
   res.cookie('KANBAN-AUTH', user.authentication.sessionToken, {
-    domain: 'localhost',
+    domain: '.kanban-odr9.onrender.com',
     path: '/',
     sameSite: 'none',
     secure: true,
@@ -132,7 +132,7 @@ export const logout = async (req: express.Request, res: express.Response) => {
   const existingUser = await getUserBySessionToken(sessionToken);
   if (sessionToken) {
     res.cookie('KANBAN-AUTH', 'none', {
-      domain: 'localhost',
+      domain: '.kanban-odr9.onrender.com',
       path: '/',
       sameSite: 'none',
       secure: true,
