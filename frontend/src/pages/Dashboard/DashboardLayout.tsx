@@ -5,11 +5,11 @@ import Dashboard from './Dashboard';
 import { useParams } from 'react-router-dom';
 
 interface props {
-  openEditModal: Function;
+  openEditModal?: Function;
   className?: string;
 }
 
-const DashboardLayout = ({ openEditModal }: props) => {
+const DashboardLayout = (props: props) => {
   const { state } = useAuthContext();
   const { board } = useParams();
 
@@ -30,9 +30,9 @@ const DashboardLayout = ({ openEditModal }: props) => {
       }
     >
       {state.user?.boards?.length !== undefined && columns.length > 0 ? (
-        <Dashboard openEditModal={openEditModal} />
+        <Dashboard openEditModal={props.openEditModal} />
       ) : (
-        <DashboardEmpty openEditModal={openEditModal} />
+        <DashboardEmpty openEditModal={props.openEditModal} />
       )}
     </section>
   );

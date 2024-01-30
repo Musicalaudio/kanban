@@ -32,8 +32,6 @@ const Layout = () => {
     });
   }, []);
 
-  // console.log('COLUMNS: ', columns);
-
   return (
     <div className={styles.layout}>
       <Header openEditModal={setEditModal} className={styles.header} />

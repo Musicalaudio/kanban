@@ -17,9 +17,9 @@ interface Props {
   columns: Array<any>;
 }
 
-const EditBoard = ({ closeModal, modal, columns }: Props) => {
+const EditBoard = ({ closeModal, modal }: Props) => {
   const { board } = useParams();
-  const { state, dispatch } = useAuthContext();
+  const { state } = useAuthContext();
   const [boardError, setBoardError] = useState<string>();
   const [columnError, setColumnError] = useState<string>();
   let actionData: any = useActionData();

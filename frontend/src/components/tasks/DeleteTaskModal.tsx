@@ -3,7 +3,7 @@ import Modal from '../modal/Modal';
 import Typography from '../../typography/Typography';
 import Button from '../button/Button';
 import { Form, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useAuthContext from '../../pages/Authentication/useAuthContext';
 import styles from './TaskModal.module.scss';
 import btn from '../button/Button.module.scss';

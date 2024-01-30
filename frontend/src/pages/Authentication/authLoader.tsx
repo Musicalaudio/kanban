@@ -11,7 +11,7 @@ export default async function authLoader() {
   console.log('TESTING');
   // if(localStorage.get)
   try {
-    const { status, user }: AuthData = await useIsAuthenticated();
+    const { user }: AuthData = await useIsAuthenticated();
     localStorage.setItem('loggedIn', 'true');
     localStorage.setItem('user', JSON.stringify(user));
     return user;

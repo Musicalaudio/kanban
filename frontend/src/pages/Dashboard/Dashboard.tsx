@@ -7,10 +7,10 @@ import useAuthContext from '../Authentication/useAuthContext';
 import axios from 'axios';
 
 interface props {
-  openEditModal: Function;
+  openEditModal?: Function;
 }
 
-const Dashboard = ({ openEditModal }: props) => {
+const Dashboard = (props: props) => {
   const { board } = useParams();
   const { state, dispatch } = useAuthContext();
 
@@ -104,9 +104,9 @@ const Dashboard = ({ openEditModal }: props) => {
           );
         })}
       <section
-        onClick={() => openEditModal(true)}
+        onClick={() => props.openEditModal?.(true)}
         className={`${styles['new-column']} new-column`}
-        key={'dashboard-new-column' + openEditModal.toString()}
+        key={'dashboard-new-column' + props.openEditModal?.toString()}
       >
         <Typography
           tag="h3"
