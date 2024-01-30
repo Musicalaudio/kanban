@@ -9,6 +9,7 @@ import { authentication, random } from '../helpers/index.js';
 import _ from 'lodash';
 
 export const login = async (req: express.Request, res: express.Response) => {
+  console.log('YESSIRRR');
   const { email, password } = req.body;
 
   if (!email || !password) {
