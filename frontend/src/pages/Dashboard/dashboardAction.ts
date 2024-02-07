@@ -26,10 +26,10 @@ export const dashboardAction = async ({ request }: { request: Request }) => {
         data = await deleteBoardAction(formData);
         console.log(`THIS IS THE ACTION DATA: ${data}`);
         return JSON.parse(data);
-      case 'logout':
-        data = await logoutAction(formData);
-        console.log(`THIS IS THE ACTION DATA: ${data}`);
-        return JSON.parse(data);
+      // case 'logout':
+      //   data = await logoutAction(formData);
+      //   console.log(`THIS IS THE ACTION DATA: ${data}`);
+      //   return JSON.parse(data);
       case 'add-task':
         data = await createTask(formData);
         console.log(`THIS IS THE ACTION DATA: ${data}`);

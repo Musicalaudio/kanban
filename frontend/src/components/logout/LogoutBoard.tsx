@@ -1,4 +1,4 @@
-import { Form } from 'react-router-dom';
+import { Form, redirect } from 'react-router-dom';
 import Modal from '../modal/Modal';
 import Typography from '../../typography/Typography';
 import Button from '../button/Button';
@@ -7,20 +7,36 @@ import styles from './../tasks/TaskModal.module.scss';
 import { useActionData } from 'react-router-dom';
 import { useEffect } from 'react';
 import useAuthContext from '../../pages/Authentication/useAuthContext';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 interface Props {
   modal: boolean;
   closeModal: () => void;
 }
 
 const LogoutBoard = ({ modal, closeModal }: Props) => {
-  const logoutActionData = useActionData();
+  // const logoutActionData = useActionData();
   const { dispatch } = useAuthContext();
-  useEffect(() => {
-    dispatch({
-      type: 'LOGOUT',
-      payload: null,
-    });
-  }, [logoutActionData]);
+  const navigate = useNavigate();
+  // useEffect(() => {
+  //   console.log('IS THIS BEING CALLED?', logoutActionData);
+  //   dispatch({
+  //     type: 'LOGOUT',
+  //     payload: null,
+  //   });
+  // }, [logoutActionData]);
+
+  const logout = async () => {
+    const res = await axios.post(`${import.meta.env.VITE_SERVER}/auth/logout`);
+    if (res) {
+      dispatch({
+        type: 'LOGOUT',
+        payload: null,
+      });
+    }
+    navigate('/login');
+  };
+
   return (
     <Modal
       modal={modal}
@@ -39,7 +55,8 @@ const LogoutBoard = ({ modal, closeModal }: Props) => {
         <input hidden name="formID" defaultValue="logout" />
         <div className={styles['delete-board__btns']}>
           <Button
-            type="submit"
+            type="button"
+            onClick={logout}
             className={`${btn.btn} ${btn.btn__destructive}`}
           >
             Logout

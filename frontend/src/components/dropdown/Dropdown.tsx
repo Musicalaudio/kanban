@@ -16,7 +16,6 @@ const Dropdown = ({
     let handler = (e: any) => {
       if (!dropdownRef.current?.contains(e.target)) {
         setDropdown(false);
-        console.log(dropdownRef.current);
       }
     };
 

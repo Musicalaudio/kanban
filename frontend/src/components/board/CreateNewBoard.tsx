@@ -41,8 +41,7 @@ const CreateNewBoard = ({ closeModal, modal }: NewBoard) => {
         ? actionData.substring(0, 7).trim() === 'Error:'
         : 'ERROR';
       let substrA = actionData ? actionData.substring(0, 7) : 'no';
-      console.log(`substr ${substrError}`);
-      console.log(`substr ${substrA}`);
+
       if (actionData?.substring(0, 7).trim() === 'Error:') {
         let newError = actionData
           ? JSON.parse(actionData?.slice(7).trim())

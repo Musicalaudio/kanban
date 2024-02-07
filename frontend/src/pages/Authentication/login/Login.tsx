@@ -33,9 +33,9 @@ const Login = () => {
           {navigation.state === 'submitting' ? 'Logging in...' : 'Log in'}
         </Button>
       </Form>
-      <p>
+      {/* <p>
         <a href="">Forgot your password?</a>
-      </p>
+      </p> */}
       <p>
         Don't have an account yet?&nbsp;
         <Link to="../signup">Sign up.</Link>

@@ -44,14 +44,10 @@ const EditBoard = ({ closeModal, modal }: Props) => {
     if (actionData && actionData instanceof Object) {
       closeModal();
     } else {
-      console.log('THIS JSON: ' + JSON.stringify(actionData));
-      console.log('THIS JSON: ' + typeof JSON.stringify(actionData));
       let substrError = actionData
         ? actionData.substring(0, 7).trim() === 'Error:'
         : 'ERROR';
       let substrA = actionData ? actionData.substring(0, 7) : 'no';
-      console.log(`substr ${substrError}`);
-      console.log(`substr ${substrA}`);
       if (actionData?.substring(0, 7).trim() === 'Error:') {
         let newError = actionData
           ? JSON.parse(actionData?.slice(7).trim())
@@ -92,16 +88,6 @@ const EditBoard = ({ closeModal, modal }: Props) => {
       { name: '', clientID: uuidv4() },
     ]);
   };
-
-  console.log(
-    'COLUMNS: ',
-    state.user?.boards?.find((obj) => obj.title === board?.split('-').join(' '))
-      ? state.user?.boards?.find(
-          (obj) => obj.title === board?.split('-').join(' ')
-        ).columns
-      : state.user?.boards?.slice(0, 1)[0].columns
-  );
-  console.log('LOCAL COLUMNS: ', localColumns);
 
   return (
     <Modal

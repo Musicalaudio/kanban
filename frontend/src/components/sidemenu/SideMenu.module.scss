@@ -62,9 +62,9 @@
     padding-left: 1.5rem;
   }
 
-  &.sidemenu--hidden {
-    display: none;
-  }
+  // &.sidemenu--hidden {
+  //   display: none;
+  // }
 
   &__create-board {
     color: $color-primary-400;
@@ -136,6 +136,10 @@
 }
 
 .sidemenu__header {
+  display: none;
+}
+
+.sidemenu--hidden {
   display: none;
 }
 

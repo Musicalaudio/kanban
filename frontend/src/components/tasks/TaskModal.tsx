@@ -72,8 +72,6 @@ const TaskModal = ({
 
   useEffect(() => {
     if (actionData && actionData instanceof Object) {
-      // console.log('THIS JSON: ' + JSON.stringify(actionData));
-      console.log('yuuuh');
       closeModal();
     }
   }, [actionData]);
@@ -81,7 +79,7 @@ const TaskModal = ({
   const handleChecked = (e: ChangeEvent<HTMLInputElement>, el: any) => {
     e.preventDefault;
     let copySubtasks = [...subtasks];
-    console.log(e);
+
     copySubtasks.forEach((subtasks: any) => {
       if (subtasks._id === el._id) {
         e.target.value = subtasks._id;
